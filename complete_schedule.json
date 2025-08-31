@@ -1,0 +1,634 @@
+{
+  "study_schedule": {
+    "班级7": {
+      "周一": {
+        "早自习": "语",
+        "午自习": "英",
+        "晚自习": "语"
+      },
+      "周二": {
+        "早自习": "英",
+        "午自习": "社",
+        "晚自习": "数"
+      },
+      "周三": {
+        "早自习": "语",
+        "午自习": "数",
+        "晚自习": "科"
+      },
+      "周四": {
+        "早自习": "英",
+        "午自习": "语",
+        "晚自习": "英"
+      },
+      "周五": {
+        "早自习": "社",
+        "午自习": "科",
+        "晚自习": "社"
+      }
+    },
+    "班级8": {
+      "周一": {
+        "早自习": "英",
+        "午自习": "科",
+        "晚自习": "科"
+      },
+      "周二": {
+        "早自习": "社",
+        "午自习": "数",
+        "晚自习": "英"
+      },
+      "周三": {
+        "早自习": "英",
+        "午自习": "语",
+        "晚自习": "数"
+      },
+      "周四": {
+        "早自习": "语",
+        "午自习": "社",
+        "晚自习": "社"
+      },
+      "周五": {
+        "早自习": "语",
+        "午自习": "英",
+        "晚自习": "语"
+      }
+    }
+  },
+  "complete_schedule": {
+    "班级7": {
+      "周一": [
+        {
+          "period": 0,
+          "course": "语",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "体育",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "英",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "语",
+          "type": "晚自习"
+        }
+      ],
+      "周二": [
+        {
+          "period": 0,
+          "course": "英",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "社",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "美术",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "校本",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "数",
+          "type": "晚自习"
+        }
+      ],
+      "周三": [
+        {
+          "period": 0,
+          "course": "语",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "数",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "体育",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "音乐",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "班队",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "科",
+          "type": "晚自习"
+        }
+      ],
+      "周四": [
+        {
+          "period": 0,
+          "course": "英",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "体育",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "语",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "社团",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "英",
+          "type": "晚自习"
+        }
+      ],
+      "周五": [
+        {
+          "period": 0,
+          "course": "社",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "科",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "信息",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "地方",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "自修",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "社",
+          "type": "晚自习"
+        }
+      ]
+    },
+    "班级8": {
+      "周一": [
+        {
+          "period": 0,
+          "course": "英",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "体育",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "科",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "科",
+          "type": "晚自习"
+        }
+      ],
+      "周二": [
+        {
+          "period": 0,
+          "course": "社",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "数",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "美术",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "校本",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "英",
+          "type": "晚自习"
+        }
+      ],
+      "周三": [
+        {
+          "period": 0,
+          "course": "英",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "语",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "体育",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "音乐",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "班队",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "数",
+          "type": "晚自习"
+        }
+      ],
+      "周四": [
+        {
+          "period": 0,
+          "course": "语",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "体育",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "社",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "社团",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "社",
+          "type": "晚自习"
+        }
+      ],
+      "周五": [
+        {
+          "period": 0,
+          "course": "语",
+          "type": "早自习"
+        },
+        {
+          "period": 1,
+          "course": "数",
+          "type": "正课"
+        },
+        {
+          "period": 2,
+          "course": "英",
+          "type": "正课"
+        },
+        {
+          "period": 3,
+          "course": "科",
+          "type": "正课"
+        },
+        {
+          "period": 4,
+          "course": "地方",
+          "type": "正课"
+        },
+        {
+          "period": 5,
+          "course": "英",
+          "type": "午自习"
+        },
+        {
+          "period": 6,
+          "course": "语",
+          "type": "正课"
+        },
+        {
+          "period": 7,
+          "course": "社",
+          "type": "正课"
+        },
+        {
+          "period": 8,
+          "course": "信息",
+          "type": "正课"
+        },
+        {
+          "period": 9,
+          "course": "自修",
+          "type": "正课"
+        },
+        {
+          "period": 10,
+          "course": "语",
+          "type": "晚自习"
+        }
+      ]
+    }
+  }
+}

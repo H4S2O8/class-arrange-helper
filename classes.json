@@ -1,0 +1,346 @@
+{
+  "班级7": {
+    "周一": [
+      {
+        "period": 1,
+        "course": "社"
+      },
+      {
+        "period": 2,
+        "course": "语"
+      },
+      {
+        "period": 3,
+        "course": "英"
+      },
+      {
+        "period": 4,
+        "course": "体育"
+      },
+      {
+        "period": 5,
+        "course": "科"
+      },
+      {
+        "period": 6,
+        "course": "数"
+      },
+      {
+        "period": 7,
+        "course": "数"
+      },
+      {
+        "period": 8,
+        "course": "社"
+      }
+    ],
+    "周二": [
+      {
+        "period": 1,
+        "course": "语"
+      },
+      {
+        "period": 2,
+        "course": "语"
+      },
+      {
+        "period": 3,
+        "course": "数"
+      },
+      {
+        "period": 4,
+        "course": "科"
+      },
+      {
+        "period": 5,
+        "course": "英"
+      },
+      {
+        "period": 6,
+        "course": "美术"
+      },
+      {
+        "period": 7,
+        "course": "社"
+      },
+      {
+        "period": 8,
+        "course": "校本"
+      }
+    ],
+    "周三": [
+      {
+        "period": 1,
+        "course": "社"
+      },
+      {
+        "period": 2,
+        "course": "语"
+      },
+      {
+        "period": 3,
+        "course": "数"
+      },
+      {
+        "period": 4,
+        "course": "英"
+      },
+      {
+        "period": 5,
+        "course": "体育"
+      },
+      {
+        "period": 6,
+        "course": "音乐"
+      },
+      {
+        "period": 7,
+        "course": "科"
+      },
+      {
+        "period": 8,
+        "course": "班队"
+      }
+    ],
+    "周四": [
+      {
+        "period": 1,
+        "course": "科"
+      },
+      {
+        "period": 2,
+        "course": "科"
+      },
+      {
+        "period": 3,
+        "course": "体育"
+      },
+      {
+        "period": 4,
+        "course": "社"
+      },
+      {
+        "period": 5,
+        "course": "数"
+      },
+      {
+        "period": 6,
+        "course": "语"
+      },
+      {
+        "period": 7,
+        "course": "英"
+      },
+      {
+        "period": 8,
+        "course": "社团"
+      }
+    ],
+    "周五": [
+      {
+        "period": 1,
+        "course": "科"
+      },
+      {
+        "period": 2,
+        "course": "数"
+      },
+      {
+        "period": 3,
+        "course": "英"
+      },
+      {
+        "period": 4,
+        "course": "社"
+      },
+      {
+        "period": 5,
+        "course": "信息"
+      },
+      {
+        "period": 6,
+        "course": "地方"
+      },
+      {
+        "period": 7,
+        "course": "语"
+      },
+      {
+        "period": 8,
+        "course": "自修"
+      }
+    ]
+  },
+  "班级8": {
+    "周一": [
+      {
+        "period": 1,
+        "course": "数"
+      },
+      {
+        "period": 2,
+        "course": "数"
+      },
+      {
+        "period": 3,
+        "course": "语"
+      },
+      {
+        "period": 4,
+        "course": "体育"
+      },
+      {
+        "period": 5,
+        "course": "社"
+      },
+      {
+        "period": 6,
+        "course": "英"
+      },
+      {
+        "period": 7,
+        "course": "社"
+      },
+      {
+        "period": 8,
+        "course": "科"
+      }
+    ],
+    "周二": [
+      {
+        "period": 1,
+        "course": "英"
+      },
+      {
+        "period": 2,
+        "course": "社"
+      },
+      {
+        "period": 3,
+        "course": "科"
+      },
+      {
+        "period": 4,
+        "course": "数"
+      },
+      {
+        "period": 5,
+        "course": "语"
+      },
+      {
+        "period": 6,
+        "course": "语"
+      },
+      {
+        "period": 7,
+        "course": "美术"
+      },
+      {
+        "period": 8,
+        "course": "校本"
+      }
+    ],
+    "周三": [
+      {
+        "period": 1,
+        "course": "语"
+      },
+      {
+        "period": 2,
+        "course": "社"
+      },
+      {
+        "period": 3,
+        "course": "英"
+      },
+      {
+        "period": 4,
+        "course": "科"
+      },
+      {
+        "period": 5,
+        "course": "体育"
+      },
+      {
+        "period": 6,
+        "course": "数"
+      },
+      {
+        "period": 7,
+        "course": "音乐"
+      },
+      {
+        "period": 8,
+        "course": "班队"
+      }
+    ],
+    "周四": [
+      {
+        "period": 1,
+        "course": "数"
+      },
+      {
+        "period": 2,
+        "course": "社"
+      },
+      {
+        "period": 3,
+        "course": "体育"
+      },
+      {
+        "period": 4,
+        "course": "语"
+      },
+      {
+        "period": 5,
+        "course": "英"
+      },
+      {
+        "period": 6,
+        "course": "科"
+      },
+      {
+        "period": 7,
+        "course": "科"
+      },
+      {
+        "period": 8,
+        "course": "社团"
+      }
+    ],
+    "周五": [
+      {
+        "period": 1,
+        "course": "数"
+      },
+      {
+        "period": 2,
+        "course": "英"
+      },
+      {
+        "period": 3,
+        "course": "科"
+      },
+      {
+        "period": 4,
+        "course": "地方"
+      },
+      {
+        "period": 5,
+        "course": "语"
+      },
+      {
+        "period": 6,
+        "course": "社"
+      },
+      {
+        "period": 7,
+        "course": "信息"
+      },
+      {
+        "period": 8,
+        "course": "自修"
+      }
+    ]
+  }
+}
