@@ -102,16 +102,29 @@ class StudySessionScheduler:
                 for day in self.days
             ]) == 0
         
-        # 约束2: 英语晚自修要求周二周四
+        # 约束2: 英语午自修要求周二周四
         for class_name in self.classes:
             for day in self.days:
                 if day not in ['周二', '周四']:
-                    self.prob += self.variables[f"{class_name}_{day}_晚自习_英"] == 0
+                    self.prob += self.variables[f"{class_name}_{day}_午自习_英"] == 0
         
         # 约束3: 科学周二不能接晚托，数学周四不能接晚托
         for class_name in self.classes:
             self.prob += self.variables[f"{class_name}_周二_晚自习_科"] == 0
             self.prob += self.variables[f"{class_name}_周四_晚自习_数"] == 0
+        
+        # 新增约束3+: 科学周二周四不能排午自修
+        for class_name in self.classes:
+            self.prob += self.variables[f"{class_name}_周二_午自习_科"] == 0
+            self.prob += self.variables[f"{class_name}_周四_午自习_科"] == 0
+        
+        # 新增约束3++: 周五8班晚自修确定为科学
+        self.prob += self.variables[f"班级8_周五_晚自习_科"] == 1
+        
+        # 由于8班周五晚自习确定为科学，其他科目不能在此时段安排
+        for subject in ['语', '数', '英', '社']:
+            self.prob += self.variables[f"班级8_周五_晚自习_{subject}"] == 0
+    
         
         # 约束4: 午自修/晚自修语、数、英、科、社各2节，平均分配到两个班
         for subject in self.subjects:
@@ -157,10 +170,34 @@ class StudySessionScheduler:
                 
                 self.prob += total_fixed + total_study <= 4
         
+        
+        # 新增约束: 语文早自习进度平衡约束
+        # 确保任何时候两个班级的语文早自习累积差异不超过1
+        days_list = ['周一', '周二', '周三', '周四', '周五']
+        
+        for i, day in enumerate(days_list):
+            # 计算截至当前天两个班级的累积语文早自习次数
+            class7_cumulative = lpSum([
+                self.variables[f"班级7_{d}_早自习_语"]
+                for d in days_list[:i + 1]
+            ])
+            
+            class8_cumulative = lpSum([
+                self.variables[f"班级8_{d}_早自习_语"]
+                for d in days_list[:i + 1]
+            ])
+            
+            # 班级7不能领先班级8超过1节
+            self.prob += class7_cumulative <= class8_cumulative + 1
+            
+            # 班级8不能领先班级7超过1节
+            self.prob += class8_cumulative <= class7_cumulative + 1
+        
+            
         # 软约束: 连续上课的指示变量约束
         continuous_periods = [
-            [0, 1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6],
-            [5, 6, 7], [6, 7, 8], [7, 8, 9], [8, 9, 10]
+            [0, 1, 2],  [3, 4, 5], [4, 5, 6],
+            [5, 6, 7],  [8, 9, 10]
         ]
         
         for day in self.days:
@@ -178,9 +215,22 @@ class StudySessionScheduler:
                     # total_in_periods <= 2 => continuous_var = 0
                     self.prob += continuous_var <= total_in_periods / 3
         
-        # 约束6: 社会不能参加周三的晚自习
-        for class_name in self.classes:
-            self.prob += self.variables[f"{class_name}_周三_晚自习_社"] == 0
+        # # 约束6: 社会不能参加周三的晚自习
+        # for class_name in self.classes:
+        #     self.prob += self.variables[f"{class_name}_周三_晚自习_社"] == 0
+        # 新增约束6: 社会必须有一节晚自习在周三，另一节则在周二或周四
+        # 确保社会晚自习总共2节中，有1节在周三
+        self.prob += lpSum([
+            self.variables[f"{class_name}_周三_晚自习_社"]
+            for class_name in self.classes
+        ]) == 1
+        
+        # 确保社会晚自习剩余的1节在周二或周四
+        self.prob += lpSum([
+            self.variables[f"{class_name}_{day}_晚自习_社"]
+            for class_name in self.classes
+            for day in ['周二', '周四']
+        ]) == 1
         
         # 约束7: 两个班级同一时间段不能上同一门课
         for day in self.days:
@@ -199,7 +249,7 @@ class StudySessionScheduler:
                         self.variables[f"{class_name}_{day}_{period}_{subject}"]
                         for subject in self.subjects
                     ]) <= 1
-    
+
     def solve(self):
         """求解优化问题"""
         # 设置目标函数：最小化连续上课次数，优先保护科学老师
@@ -377,16 +427,53 @@ class StudySessionScheduler:
                     if schedule[class_name][day]['早自习'] == subject:
                         violations.append(f"早自修不应安排{subject}学")
         
-        # 验证约束2: 英语晚自修要求周二周四
-        print("2. 验证英语晚自修时间:")
+        
+        # 新增验证: 语文早自习进度平衡
+        print("1++. 验证语文早自习进度平衡:")
+        days_list = ['周一', '周二', '周三', '周四', '周五']
+        
+        # 收集每个班级的语文早自习安排
+        class7_chinese = []
+        class8_chinese = []
+        
+        for day in days_list:
+            if schedule['班级7'][day]['早自习'] == '语':
+                class7_chinese.append(day)
+            if schedule['班级8'][day]['早自习'] == '语':
+                class8_chinese.append(day)
+        
+        print(f"   班级7语文早自习: {', '.join(class7_chinese) if class7_chinese else '无'}")
+        print(f"   班级8语文早自习: {', '.join(class8_chinese) if class8_chinese else '无'}")
+        
+        # 检查进度平衡
+        balance_violations = []
+        for i, day in enumerate(days_list):
+            class7_count_till_day = len([d for d in class7_chinese if days_list.index(d) <= i])
+            class8_count_till_day = len([d for d in class8_chinese if days_list.index(d) <= i])
+            
+            # 任何一天结束时，两个班级的累积差异不应超过1
+            diff = abs(class7_count_till_day - class8_count_till_day)
+            if diff > 1:
+                balance_violations.append(f"截至{day}: 班级7有{class7_count_till_day}次，班级8有{class8_count_till_day}次，差异{diff}超过1")
+        
+        if balance_violations:
+            print("   发现进度平衡问题:")
+            for violation in balance_violations:
+                print(f"   - {violation}")
+            violations.extend([f"语文早自习进度不平衡: {v}" for v in balance_violations])
+        else:
+            print("   语文早自习进度平衡检查通过")
+        
+        # 验证约束2: 英语午自修要求周二周四
+        print("2. 验证英语午自修时间:")
         english_evening = []
         for class_name in self.classes:
             for day in self.days:
-                if schedule[class_name][day]['晚自习'] == '英':
+                if schedule[class_name][day]['午自习'] == '英':
                     english_evening.append(f"{class_name}{day}")
                     if day not in ['周二', '周四']:
-                        violations.append(f"英语晚自修安排在非周二周四: {class_name}{day}")
-        print(f"   英语晚自修安排: {', '.join(english_evening)}")
+                        violations.append(f"英语午自修安排在非周二周四: {class_name}{day}")
+        print(f"   英语午自修安排: {', '.join(english_evening)}")
         
         # 验证约束3: 科学周二不能接晚托，数学周四不能接晚托
         print("3. 验证特殊晚托限制:")
@@ -397,6 +484,31 @@ class StudySessionScheduler:
                 violations.append(f"数学不能在周四晚托: {class_name}")
         print("   科学周二晚托和数学周四晚托检查通过")
         
+        # 新增验证约束3+: 科学周二周四不能排午自修
+        print("3+. 验证科学午自修限制:")
+        science_noon_violations = []
+        for class_name in self.classes:
+            if schedule[class_name]['周二']['午自习'] == '科':
+                science_noon_violations.append(f"科学不能在周二午自修: {class_name}")
+                violations.append(f"科学不能在周二午自修: {class_name}")
+            if schedule[class_name]['周四']['午自习'] == '科':
+                science_noon_violations.append(f"科学不能在周四午自修: {class_name}")
+                violations.append(f"科学不能在周四午自修: {class_name}")
+        
+        if science_noon_violations:
+            for violation in science_noon_violations:
+                print(f"   违反: {violation}")
+        else:
+            print("   科学周二周四午自修限制检查通过")
+        
+        # 新增验证约束3++: 周五8班晚自修确定为科学
+        print("3++. 验证班级8周五晚自修固定安排:")
+        if schedule['班级8']['周五']['晚自习'] != '科':
+            violations.append(f"班级8周五晚自修应该是科学，实际是: {schedule['班级8']['周五']['晚自习']}")
+            print(f"   违反: 班级8周五晚自修应该是科学，实际是: {schedule['班级8']['周五']['晚自习']}")
+        else:
+            print("   班级8周五晚自修科学安排检查通过")
+
         # 验证约束4: 午自修/晚自修各科目各2节，平均分配
         print("4. 验证午自修和晚自修分配:")
         for period in ['午自习', '晚自习']:
@@ -512,12 +624,41 @@ class StudySessionScheduler:
         
         print(f"   总连续上课次数: {continuous_count}, 科学老师连续上课次数: {science_continuous}")
         
-        # 验证约束6: 社会不能参加周三的晚自习
-        print("6. 验证社会周三晚自习限制:")
+        # # 验证约束6: 社会不能参加周三的晚自习
+        # print("6. 验证社会周三晚自习限制:")
+        # for class_name in self.classes:
+        #     if schedule[class_name]['周三']['晚自习'] == '社':
+        #         violations.append(f"社会不能在周三晚自习: {class_name}")
+        # print("   社会周三晚自习限制检查通过")
+        # 新增验证约束6: 社会必须有一节晚自习在周三，另一节则在周二或周四
+        print("6. 验证社会晚自习时间安排:")
+        social_evening = []
+        wednesday_count = 0
+        tuesday_thursday_count = 0
+        other_days_count = 0
+        
         for class_name in self.classes:
-            if schedule[class_name]['周三']['晚自习'] == '社':
-                violations.append(f"社会不能在周三晚自习: {class_name}")
-        print("   社会周三晚自习限制检查通过")
+            for day in self.days:
+                if schedule[class_name][day]['晚自习'] == '社':
+                    social_evening.append(f"{class_name}{day}")
+                    if day == '周三':
+                        wednesday_count += 1
+                    elif day in ['周二', '周四']:
+                        tuesday_thursday_count += 1
+                    else:
+                        other_days_count += 1
+                        violations.append(f"社会晚自习不应安排在{day}: {class_name}")
+        
+        print(f"   社会晚自习安排: {', '.join(social_evening)}")
+        print(f"   周三安排: {wednesday_count}节, 周二周四安排: {tuesday_thursday_count}节, 其他天: {other_days_count}节")
+        
+        if wednesday_count != 1:
+            violations.append(f"社会晚自习在周三应该有1节，实际有{wednesday_count}节")
+        if tuesday_thursday_count != 1:
+            violations.append(f"社会晚自习在周二周四应该有1节，实际有{tuesday_thursday_count}节")
+        
+        if wednesday_count == 1 and tuesday_thursday_count == 1 and other_days_count == 0:
+            print("   社会晚自习时间安排检查通过")
         
         # 验证约束7: 两个班级同一时间段不能上同一门课
         print("7. 验证班级间冲突:")
